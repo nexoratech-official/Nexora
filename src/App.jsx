@@ -5,6 +5,12 @@ import {
   Play, Sparkles, X, Zap, ShieldCheck, Globe2, BookOpen, MonitorSmartphone
 } from 'lucide-react';
 
+const externalLinks = {
+  techVerse: 'https://techverseofficial.vercel.app/',
+  academy: 'https://www.youtube.com/@VikasMauryaAcademy',
+  codingSchool: 'https://www.youtube.com/@VikasCodingSchool'
+};
+
 const products = [
   {
     id: 'nexora-ai', number: '01', name: 'Nexora AI', category: 'ARTIFICIAL INTELLIGENCE',
@@ -20,6 +26,7 @@ const products = [
   },
   {
     id: 'techverse', number: '03', name: 'TechVerse', category: 'TECHNOLOGY LEARNING',
+    href: externalLinks.techVerse,
     description: 'Explore technology, develop practical skills and keep moving forward.',
     detail: 'The technology-learning platform currently being developed, with a vision spanning programming, AI, cloud, cybersecurity, projects and career preparation.',
     icon: Orbit, tone: 'cyan', status: 'In development', tags: ['Programming', 'Emerging tech', 'Career skills']
@@ -33,8 +40,8 @@ const products = [
 ];
 
 const channels = [
-  { name: 'Vikas Maurya Academy', label: 'TECH EDUCATION', text: 'Technology tutorials, learning resources and educational content.', initials: 'VMA', color: 'purple' },
-  { name: 'Vikas Coding School', label: 'CODING & CAREERS', text: 'Programming, DSA, interview preparation and placement-focused learning.', initials: 'VCS', color: 'blue' },
+  { name: 'Vikas Maurya Academy', href: externalLinks.academy, label: 'TECH EDUCATION', text: 'Technology tutorials, learning resources and educational content.', initials: 'VMA', color: 'purple' },
+  { name: 'Vikas Coding School', href: externalLinks.codingSchool, label: 'CODING & CAREERS', text: 'Programming, DSA, interview preparation and placement-focused learning.', initials: 'VCS', color: 'blue' },
   { name: 'Vikas Gaming', label: 'GAMING COMMUNITY', text: 'A creator-led gaming identity, separate from the Nexora Games venture.', initials: 'VG', color: 'orange' }
 ];
 
@@ -100,7 +107,7 @@ function App() {
             <div className="art-core"><div className="core-inner"><span className="core-glyph">N</span></div><div className="core-caption">IDEAS IN MOTION</div></div>
             <div className="float-card card-ai"><span className="float-icon violet"><BrainCircuit size={19} /></span><div><strong>Nexora AI</strong><small>Intelligence, explored</small></div><span className="card-status" /></div>
             <div className="float-card card-code"><span className="float-icon blue"><Code2 size={19} /></span><div><strong>Nexora Software</strong><small>Digital experiences</small></div></div>
-            <div className="float-card card-learn"><span className="float-icon cyan"><Orbit size={19} /></span><div><strong>TechVerse</strong><small>Learn what's next</small></div></div>
+            <div className="float-card card-learn"><span className="float-icon cyan"><Orbit size={19} /></span><div><strong><a className="linked-name" href={externalLinks.techVerse} target="_blank" rel="noreferrer">TechVerse</a></strong><small>Learn what's next</small></div></div>
             <div className="float-card card-games"><span className="float-icon orange"><Gamepad2 size={19} /></span><div><strong>Nexora Games</strong><small>Worlds to imagine</small></div></div>
             <div className="art-spark spark-a"><Sparkles size={19} /></div><div className="art-spark spark-b"><Zap size={16} /></div>
           </div>
@@ -130,7 +137,7 @@ function App() {
               return <article className={`product-card product-${product.tone}`} key={product.id}>
                 <div className="product-card-top"><span className="product-number">{product.number} / 04</span><span className="product-icon"><Icon size={22} /></span></div>
                 <div className="product-category">{product.category}</div>
-                <h3>{product.name}</h3><p>{product.description}</p>
+                <h3>{product.href ? <a className="linked-name" href={product.href} target="_blank" rel="noreferrer">{product.name}</a> : product.name}</h3><p>{product.description}</p>
                 <div className="product-card-bottom"><span className="status-pill"><span />{product.status}</span><button aria-label={`Learn more about ${product.name}`} className="round-arrow" onClick={() => setActiveProduct(product)}><ArrowUpRight size={18} /></button></div>
               </article>;
             })}
@@ -142,11 +149,11 @@ function App() {
       <section className="feature-section dark-section" id="techverse">
         <div className="feature-grid-bg" />
         <div className="container feature-layout">
-          <div className="feature-copy"><SectionLabel light>FEATURED PLATFORM</SectionLabel><div className="feature-kicker"><Orbit size={15} /> A LEARNING UNIVERSE</div><h2>Meet <span className="gradient-text">TechVerse.</span></h2><p>A technology-learning platform in development, designed around the idea that learning should connect concepts with practice—and skills with opportunity.</p>
+          <div className="feature-copy"><SectionLabel light>FEATURED PLATFORM</SectionLabel><div className="feature-kicker"><Orbit size={15} /> A LEARNING UNIVERSE</div><h2>Meet <a className="gradient-text linked-name" href={externalLinks.techVerse} target="_blank" rel="noreferrer">TechVerse</a>.</h2><p>A technology-learning platform in development, designed around the idea that learning should connect concepts with practice—and skills with opportunity.</p>
             <div className="feature-points"><div><Check size={15} /> Programming & computer science</div><div><Check size={15} /> AI and emerging technologies</div><div><Check size={15} /> Projects and career preparation</div></div>
             <button className="button button-primary" onClick={() => scrollTo('contact')}>Follow the journey <ArrowRight size={17} /></button>
           </div>
-          <div className="techverse-visual"><div className="tv-window"><div className="tv-window-bar"><div className="window-dots"><i /><i /><i /></div><span>TECHVERSE / LEARNING PATHS</span><span className="window-menu">•••</span></div><div className="tv-window-content"><div className="tv-greeting">YOUR NEXT CHAPTER <Sparkles size={13} /></div><h3>Learn by exploring.</h3><p>Build skills that move you forward.</p><div className="tv-progress-label"><span>Suggested learning paths</span><span>04 paths</span></div><div className="learning-path"><span className="path-icon path-purple"><Code2 size={16} /></span><div><strong>Programming foundations</strong><small>Logic · Code · Practice</small></div><ArrowUpRight size={15} /></div><div className="learning-path"><span className="path-icon path-cyan"><BrainCircuit size={16} /></span><div><strong>AI & machine learning</strong><small>Understand · Experiment · Build</small></div><ArrowUpRight size={15} /></div><div className="learning-path"><span className="path-icon path-orange"><Layers3 size={16} /></span><div><strong>Cloud & modern development</strong><small>Deploy · Scale · Improve</small></div><ArrowUpRight size={15} /></div><div className="tv-footer"><span><span className="live-dot" /> PLATFORM IN DEVELOPMENT</span><span>MADE FOR THE CURIOUS ↗</span></div></div></div><div className="tv-orbit tv-orbit-1" /><div className="tv-orbit tv-orbit-2" /><div className="tv-deco tv-deco-1"><BookOpen size={19} /></div><div className="tv-deco tv-deco-2"><MonitorSmartphone size={20} /></div></div>
+          <div className="techverse-visual"><div className="tv-window"><div className="tv-window-bar"><div className="window-dots"><i /><i /><i /></div><a href={externalLinks.techVerse} target="_blank" rel="noreferrer">TECHVERSE / LEARNING PATHS</a><span className="window-menu">•••</span></div><div className="tv-window-content"><div className="tv-greeting">YOUR NEXT CHAPTER <Sparkles size={13} /></div><h3>Learn by exploring.</h3><p>Build skills that move you forward.</p><div className="tv-progress-label"><span>Suggested learning paths</span><span>04 paths</span></div><div className="learning-path"><span className="path-icon path-purple"><Code2 size={16} /></span><div><strong>Programming foundations</strong><small>Logic · Code · Practice</small></div><ArrowUpRight size={15} /></div><div className="learning-path"><span className="path-icon path-cyan"><BrainCircuit size={16} /></span><div><strong>AI & machine learning</strong><small>Understand · Experiment · Build</small></div><ArrowUpRight size={15} /></div><div className="learning-path"><span className="path-icon path-orange"><Layers3 size={16} /></span><div><strong>Cloud & modern development</strong><small>Deploy · Scale · Improve</small></div><ArrowUpRight size={15} /></div><div className="tv-footer"><span><span className="live-dot" /> PLATFORM IN DEVELOPMENT</span><span>MADE FOR THE CURIOUS ↗</span></div></div></div><div className="tv-orbit tv-orbit-1" /><div className="tv-orbit tv-orbit-2" /><div className="tv-deco tv-deco-1"><BookOpen size={19} /></div><div className="tv-deco tv-deco-2"><MonitorSmartphone size={20} /></div></div>
         </div>
       </section>
 
@@ -154,9 +161,9 @@ function App() {
         <div className="container">
           <div className="section-heading-row"><div><SectionLabel>EDUCATION & MEDIA</SectionLabel><h2>Learning is better<br /><span className="text-muted">when shared.</span></h2></div><p>Alongside Nexora’s product ecosystem, established creator brands connect people with tutorials, coding practice and gaming content.</p></div>
           <div className="channel-grid">
-            {channels.map((channel, i) => <article className="channel-card" key={channel.name}><div className={`channel-avatar ${channel.color}`}><span>{channel.initials}</span><div className="avatar-ring" /></div><div className="channel-label">{channel.label}</div><h3>{channel.name}</h3><p>{channel.text}</p><div className="channel-bottom"><span className="channel-index">0{i + 1}</span><span className="channel-note">CREATOR BRAND</span></div></article>)}
+            {channels.map((channel, i) => <article className="channel-card" key={channel.name}><div className={`channel-avatar ${channel.color}`}><span>{channel.initials}</span><div className="avatar-ring" /></div><div className="channel-label">{channel.label}</div><h3>{channel.href ? <a className="linked-name" href={channel.href} target="_blank" rel="noreferrer">{channel.name}</a> : channel.name}</h3><p>{channel.text}</p><div className="channel-bottom"><span className="channel-index">0{i + 1}</span><span className="channel-note">CREATOR BRAND</span></div></article>)}
           </div>
-          <div className="education-note"><div className="note-icon"><Globe2 size={21} /></div><p><strong>Connected by a shared vision.</strong> Vikas Maurya Academy, Vikas Coding School and Vikas Gaming retain their own identities within the wider Maurya Group vision.</p><button className="text-link" onClick={() => scrollTo('contact')}>Collaborate <ArrowRight size={16} /></button></div>
+          <div className="education-note"><div className="note-icon"><Globe2 size={21} /></div><p><strong>Connected by a shared vision.</strong> <a className="linked-name" href={externalLinks.academy} target="_blank" rel="noreferrer">Vikas Maurya Academy</a>, <a className="linked-name" href={externalLinks.codingSchool} target="_blank" rel="noreferrer">Vikas Coding School</a> and Vikas Gaming retain their own identities within the wider Maurya Group vision.</p><button className="text-link" onClick={() => scrollTo('contact')}>Collaborate <ArrowRight size={16} /></button></div>
         </div>
       </section>
 
@@ -174,9 +181,9 @@ function App() {
       <section className="final-cta dark-section"><div className="final-cta-glow" /><div className="container final-cta-inner"><div className="final-mark"><Brand small /></div><div><SectionLabel light>THE NEXT CHAPTER STARTS HERE</SectionLabel><h2>Stay curious.<br /><span className="gradient-text">Build what matters.</span></h2></div><button className="button button-primary" onClick={() => scrollTo('products')}>Explore the ecosystem <ArrowRight size={17} /></button></div></section>
     </main>
 
-    <footer className="site-footer"><div className="container footer-main"><div className="footer-brand-col"><Brand /><p>Technology, learning and digital possibilities—connected by curiosity.</p><span className="parent-chip">A vision within <strong>Maurya Group</strong></span></div><div className="footer-links"><div><span className="footer-title">EXPLORE</span><a href="#ecosystem">Ecosystem</a><a href="#products">Ventures</a><a href="#techverse">TechVerse</a><a href="#about">About Nexora</a></div><div><span className="footer-title">OUR VENTURES</span><button onClick={() => setActiveProduct(products[0])}>Nexora AI</button><button onClick={() => setActiveProduct(products[1])}>Nexora Software</button><button onClick={() => setActiveProduct(products[2])}>TechVerse</button><button onClick={() => setActiveProduct(products[3])}>Nexora Games</button></div><div><span className="footer-title">COMMUNITY</span><a href="#education">Vikas Maurya Academy</a><a href="#education">Vikas Coding School</a><a href="#education">Vikas Gaming</a><a href="#contact">Contact</a></div></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Nexora. A brand vision within Maurya Group.</span><span>Built with curiosity <Sparkles size={13} /></span></div></footer>
+    <footer className="site-footer"><div className="container footer-main"><div className="footer-brand-col"><Brand /><p>Technology, learning and digital possibilities—connected by curiosity.</p><span className="parent-chip">A vision within <strong>Maurya Group</strong></span></div><div className="footer-links"><div><span className="footer-title">EXPLORE</span><a href="#ecosystem">Ecosystem</a><a href="#products">Ventures</a><a href={externalLinks.techVerse} target="_blank" rel="noreferrer">TechVerse</a><a href="#about">About Nexora</a></div><div><span className="footer-title">OUR VENTURES</span><button onClick={() => setActiveProduct(products[0])}>Nexora AI</button><button onClick={() => setActiveProduct(products[1])}>Nexora Software</button><a href={externalLinks.techVerse} target="_blank" rel="noreferrer">TechVerse</a><button onClick={() => setActiveProduct(products[3])}>Nexora Games</button></div><div><span className="footer-title">COMMUNITY</span><a href={externalLinks.academy} target="_blank" rel="noreferrer">Vikas Maurya Academy</a><a href={externalLinks.codingSchool} target="_blank" rel="noreferrer">Vikas Coding School</a><a href="#education">Vikas Gaming</a><a href="#contact">Contact</a></div></div></div><div className="container footer-bottom"><span>© {new Date().getFullYear()} Nexora. A brand vision within Maurya Group.</span><span>Built with curiosity <Sparkles size={13} /></span></div></footer>
 
-    {activeProduct && <div className="modal-backdrop" role="presentation" onMouseDown={e => { if (e.target === e.currentTarget) setActiveProduct(null); }}><section className="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button className="modal-close" onClick={() => setActiveProduct(null)} aria-label="Close details"><X size={20} /></button><div className={`modal-icon ${activeProduct.tone}`}><activeProduct.icon size={26} /></div><span className="product-category">{activeProduct.category}</span><h2 id="modal-title">{activeProduct.name}</h2><p>{activeProduct.detail}</p><div className="modal-status"><span className="status-pill"><span />{activeProduct.status}</span></div><div className="modal-tags">{activeProduct.tags.map(tag => <span key={tag}>{tag}</span>)}</div><div className="modal-footnote"><ShieldCheck size={15} /> This page describes the direction of the venture, not a claim that all features are available.</div><button className="button button-dark" onClick={() => { setActiveProduct(null); scrollTo('contact'); }}>Discuss this venture <ArrowRight size={16} /></button></section></div>}
+    {activeProduct && <div className="modal-backdrop" role="presentation" onMouseDown={e => { if (e.target === e.currentTarget) setActiveProduct(null); }}><section className="product-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title"><button className="modal-close" onClick={() => setActiveProduct(null)} aria-label="Close details"><X size={20} /></button><div className={`modal-icon ${activeProduct.tone}`}><activeProduct.icon size={26} /></div><span className="product-category">{activeProduct.category}</span><h2 id="modal-title">{activeProduct.href ? <a className="linked-name" href={activeProduct.href} target="_blank" rel="noreferrer">{activeProduct.name}</a> : activeProduct.name}</h2><p>{activeProduct.detail}</p><div className="modal-status"><span className="status-pill"><span />{activeProduct.status}</span></div><div className="modal-tags">{activeProduct.tags.map(tag => <span key={tag}>{tag}</span>)}</div><div className="modal-footnote"><ShieldCheck size={15} /> This page describes the direction of the venture, not a claim that all features are available.</div><button className="button button-dark" onClick={() => { setActiveProduct(null); scrollTo('contact'); }}>Discuss this venture <ArrowRight size={16} /></button></section></div>}
   </div>;
 }
 

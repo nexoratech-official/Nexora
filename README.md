@@ -14,7 +14,7 @@ A responsive React + Vite landing website for Nexora, the technology and digital
 
 ## Run locally
 
-Requirements: Node.js 18+ (recommended)
+Requirements: Node.js 20.19+ or 22.12+ (required by the current Vite version).
 
 ```bash
 npm install
